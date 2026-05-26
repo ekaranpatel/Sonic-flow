@@ -100,8 +100,10 @@ function App() {
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
               <h2>The Sonic Flow Vision</h2>
               <p>
-                Sonic Flow was engineered to bridge the gap between shared physical spaces and seamless digital cinematic experiences. By bypassing restrictive network isolations and leveraging WebRTC, this platform ensures that viewers can enjoy high-fidelity, perfectly synchronized studio audio and video with absolute zero latency. No internet bottlenecks, no audio delays—just pure, uninterrupted entertainment.
-              </p>
+  Watching a movie together on a single screen usually means relying on weak laptop speakers, as connecting multiple earphones simultaneously is a hardware bottleneck. Sonic Flow was engineered to solve this.
+  <br /><br />
+  Acting as a digital "silent disco" for your movie nights, Sonic Flow uses a custom peer-to-peer WebRTC architecture to capture uncompressed audio from the host device and broadcast it directly to connected smartphones. Because the transmission happens entirely over your local Wi-Fi or mobile hotspot, it bypasses the internet entirely. The result is perfectly synchronized, zero-latency studio audio delivered straight to your earphones—without ever draining your mobile data.
+</p>
               <button className="primary" onClick={() => setShowAbout(false)} style={{ width: '100%' }}>
                 Return to Hub
               </button>
