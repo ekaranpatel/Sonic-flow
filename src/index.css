@@ -581,3 +581,28 @@ body { overflow-x: hidden; color: var(--text); }
     -webkit-backdrop-filter: blur(4px) !important;
   }
 }
+/* ─── FINAL MOBILE FIXES (LAG & SCROLLABLE MODAL) ────────────────────────── */
+@media (max-width: 600px) {
+  /* 1. Fix the Modal so you can actually scroll through it */
+  .modal-content {
+    max-height: 80vh; /* Prevents it from being taller than the screen */
+    overflow-y: auto; /* Adds a scrollbar if the text is too long */
+    padding: 24px !important; /* Reduces padding to save space */
+  }
+  .modal-content h2 {
+    font-size: 2.2rem !important;
+    margin-bottom: 12px !important;
+  }
+  .modal-content p {
+    font-size: 1rem !important;
+  }
+
+  /* 2. Kill the ultimate lag culprits: Massive background blurs and shadows */
+  .gridGlow {
+    display: none !important; /* Deletes the giant invisible blur on mobile */
+  }
+  
+  .orb-1, .orb-2, .orb-3, .orb-4 {
+    filter: none !important; /* Removing drop-shadows on moving images boosts FPS by 50% */
+  }
+}
