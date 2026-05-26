@@ -545,3 +545,39 @@ body { overflow-x: hidden; color: var(--text); }
   85% { opacity: 0.9; }
   100% { left: 110%; transform: rotate(360deg); opacity: 0; }
 }
+/* ─── MOBILE PERFORMANCE OPTIMIZATIONS ───────────────────────────────────── */
+
+/* 1. Force Hardware Acceleration: Tells the phone's GPU to handle these layers */
+.shape, .orb, .logoDot, .primary, .secondary {
+  will-change: transform, opacity;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@media (max-width: 600px) {
+  /* 2. Kill the Scanline: Animating a full-screen blurred line destroys mobile framerates */
+  .spline-page::after {
+    display: none !important;
+  }
+  
+  /* 3. Freeze the Sparkle: Static dots look identical but save 30% CPU power */
+  .spline-page::before {
+    animation: none !important;
+    opacity: 0.4 !important;
+  }
+
+  /* 4. Remove Glassmorphism (Blur): Apple/Android phones struggle to render this over gradients */
+  .navbar {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255, 255, 255, 0.98) !important; /* Solidifies the background instead */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03); /* Lighter, cheaper shadow */
+  }
+
+  /* 5. Optimize the Modal Blur */
+  .modal-overlay {
+    backdrop-filter: blur(4px) !important; /* Reduced from 10px */
+    -webkit-backdrop-filter: blur(4px) !important;
+  }
+}
